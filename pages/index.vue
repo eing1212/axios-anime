@@ -1,4 +1,5 @@
 <template lang="html">
+<!-- <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"> -->
   <div>
     <div>
       <v-text-field v-model="query" label="Search"> </v-text-field>
@@ -32,8 +33,37 @@
           />
         </v-list-item>
       </v-card>
+       <v-row>
+    <v-col
+      v-for="n in 9"
+      :key="n"
+      class="d-flex child-flex"
+      cols="4"
+    >
+      <v-img
+        :src="`https://cdn.myanimelist.net/images/anime/1217/103378.jpg?s=72ec284469833b7403529d43f574f5c9${n * 5 + 10}`"
+      
+        aspect-ratio="1"
+        class="grey lighten-2"
+      >
+        <template v-slot:placeholder>
+          <v-row
+            class="fill-height ma-0"
+            align="center"
+            justify="center"
+          >
+            <v-progress-circular
+              indeterminate
+              color="grey lighten-5"
+            ></v-progress-circular>
+          </v-row>
+        </template>
+      </v-img>
+    </v-col>
+  </v-row>
     </div>
   </div>
+  <!-- </v-parallax> -->
 </template>
 
 <script>
@@ -42,7 +72,7 @@ export default {
   data() {
     return {
       query: '',
-      results: []
+      results: [],
     }
   },
   methods: {
@@ -56,8 +86,8 @@ export default {
     handleMangaClick(manga) {
       console.log('MANGA', manga)
       window.location = manga.url
-    }
-  }
+    },
+  },
 }
 </script>
 
